@@ -1,24 +1,31 @@
+from Vector import Vector
+
 
 class Object:
     def __init__(self, mass: float, position: list, velocity: list):
         self.mass = mass
-        self.position = position
-        self.velocity = velocity
         self.x_positions = [position[0]]
         self.y_positions = [position[1]]
+        self.position = Vector(position)
+        self.velocity = Vector(velocity)
 
-    def update_velocity(self, other_mass: float, other_position: list, time_increment: float):
+    def update_velocity(self, other_mass: float, other_position: Vector, time_increment: float):
         gravitational_const = -6.674 * 10**-11
+        exponent = gravitational_const * other_mass * self.mass
 
-        self.velocity[0] += (((gravitational_const * other_mass * time_increment) /
-                              (self.position[0] - other_position[0])**2))
-        self.velocity[1] += (((gravitational_const * other_mass * time_increment) /
-                              (self.position[1] - other_position[1])**2))
+        den = ((self.position[0] - other_position[0])**2 + (self.position[1] - other_position[1])**2)**0.5
+        force_gravity = exponent / den**2
+
+        force_gravity = Vector([force_gravity, force_gravity]) * (self.position / Vector([(self.position[0]**2+self.position[1]**2)**0.5]*2))
+
+        exponent = time_increment / self.mass
+        delta_velocity = force_gravity * Vector([exponent, exponent])
+
+        self.velocity += delta_velocity
 
     def update_position(self, time_increment: float):
 
-        self.position[0] += self.velocity[0] * time_increment
-        self.position[1] += self.velocity[1] * time_increment
+        self.position += (self.velocity * Vector([time_increment, time_increment]))
 
     def update_attributes(self):
 
