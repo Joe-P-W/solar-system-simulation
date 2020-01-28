@@ -1,5 +1,8 @@
 from Object import Object
 import matplotlib.pyplot as plt
+import time
+
+t1 = time.time()
 
 neptune = Object(1.024*10**26, [4.495*10**12, 0], [0, 5.43*10**3], "Neptune")
 uranus = Object(8.681*10**25, [2.871*10**12, 0], [0, 6.8*10**3], "Uranus")
@@ -14,7 +17,7 @@ sun = Object(1.989*10**30, [1, 1], [0, 0], "Sun")
 time_increment = 100
 objects = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
 
-for i in range(int(((3.154*10**7)/time_increment))):
+for i in range(int(((3.154*10**7)/time_increment)/8)):
     for index, _object in enumerate(objects):
         other_objects = objects[:index] + objects[index+1:]
         for other_object in other_objects:
@@ -34,3 +37,4 @@ for _object in objects:
 
 plt.legend()
 plt.show()
+print(f"Singlethread took: {time.time() - t1}")
