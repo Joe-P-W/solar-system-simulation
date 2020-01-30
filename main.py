@@ -12,7 +12,7 @@ mars = Object(6.39*10**23, [234.28*10**9, 0], [0, 24*10**3], "Mars")
 earth = Object(5.972*10**24, [147.35*10**9, 0], [0, 29.75*10**3], "Earth")
 moon = Object(7.34767309*10**22, [1.5*10**11, 0], [0, 30.75*10**3], "Moon")
 venus = Object(4.867*10**24, [108.11*10**9, 0], [0, 35*10**3], "Venus")
-mercury = Object(3.285*10**23, [53.761*10**9, 0], [0, 52*10**3], "Mercury")
+mercury = Object(3.285*10**23, [53.761*10**9, 0], [0, 46*10**3], "Mercury")
 sun = Object(1.989*10**30, [1, 1], [0, 0], "Sun")
 
 
@@ -35,7 +35,7 @@ plt.ylabel("y distance from the Sun (metres)")
 for _object in objects:
     plt.plot(_object.x_positions, _object.y_positions, label=_object.name)
 
-boundary = 60 * 10 ** 9
+boundary = 4.7*10**12
 plt.xlim(-boundary, boundary)
 plt.ylim(-boundary, boundary)
 plt.legend()
