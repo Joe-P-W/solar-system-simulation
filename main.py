@@ -14,14 +14,12 @@ moon = Object(7.34767309*10**22, [1.5*10**11, 0], [0, 30.75*10**3], "Moon")
 venus = Object(4.867*10**24, [108.11*10**9, 0], [0, 35*10**3], "Venus")
 mercury = Object(3.285*10**23, [53.761*10**9, 0], [0, 52*10**3], "Mercury")
 sun = Object(1.989*10**30, [1, 1], [0, 0], "Sun")
-sun2 = Object(1.989*10**30, [108.11*10**7, 1], [0, 100*10**3], "Sun2")
-sun3 = Object(1.989*10**30, [1, -108.11*10**7], [-100*10**3, 0], "Sun")
-sun4 = Object(1.989*10**30, [1, 108.11*10**7], [100*10**3, 0], "Sun2")
 
-time_increment = 10
-objects = [sun, mercury]
 
-for i in range(int(((3.154*10**7)/time_increment)/4)):
+time_increment = 100
+objects = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune]
+
+for i in range(int(((3.154*10**7)/time_increment))):
     for index, _object in enumerate(objects):
         other_objects = objects[:index] + objects[index+1:]
         for other_object in other_objects:
