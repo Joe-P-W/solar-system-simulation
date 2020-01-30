@@ -32,26 +32,29 @@ class Vector:
         return Vector([x_value, y_value])
 
     def __mul__(self, other):
-        x_value = self.x_value * other.x_value
-        y_value = self.y_value * other.y_value
+
+        x_value = self.x_value * other
+        y_value = self.y_value * other
 
         return Vector([x_value, y_value])
 
     def __rmul__(self, other):
-        x_value = self.x_value * other.x_value
-        y_value = self.y_value * other.y_value
+
+        x_value = self.x_value * other
+        y_value = self.y_value * other
 
         return Vector([x_value, y_value])
 
     def __imul__(self, other):
-        x_value = self.x_value * other.x_value
-        y_value = self.y_value * other.y_value
+
+        x_value = self.x_value * other
+        y_value = self.y_value * other
 
         return Vector([x_value, y_value])
 
     def __truediv__(self, other):
-        x_value = self.x_value / other.x_value
-        y_value = self.y_value / other.y_value
+        x_value = self.x_value / other
+        y_value = self.y_value / other
 
         return Vector([x_value, y_value])
 

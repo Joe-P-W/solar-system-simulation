@@ -19,16 +19,15 @@ class Object:
 
         force_gravity = exponent / magnitude_distance ** 2
 
-        force_gravity = Vector([force_gravity, force_gravity]) * \
-                              (self.position / Vector([(self.position[0] ** 2 + self.position[1] ** 2) ** 0.5] * 2))
+        force_gravity = force_gravity * (self.position / (self.position[0] ** 2 + self.position[1] ** 2) ** 0.5)
 
         exponent = time_increment / self.mass
-        delta_velocity = force_gravity * Vector([exponent, exponent])
+        delta_velocity = force_gravity * exponent
 
         self.velocity += delta_velocity
 
     def update_position(self, time_increment: float):
-        self.position += (self.velocity * Vector([time_increment, time_increment]))
+        self.position += self.velocity * time_increment
 
     def update_attributes(self):
         self.x_positions.append(self.position[0])
